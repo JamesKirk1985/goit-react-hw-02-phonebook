@@ -2,7 +2,7 @@ import { Component } from "react";
 import { ContactForm } from "./PhoneBook/ContactForm/ContactForm";
 import { Filter } from "./PhoneBook/Filter/Filter";
 import { ContactList } from "./PhoneBook/ContactList/ContactList";
-
+import css from './App.module.css'
 
 class PhoneBook extends Component {
 
@@ -43,7 +43,7 @@ class PhoneBook extends Component {
       <div>
         <ContactForm addContact={this.addContact} inputChange={this.inputChange} />
         
-        <h2>Contacts</h2>  
+        <h2 className={css.title}>Contacts</h2>  
         <Filter filterAdd={this.filterAdd} />
         
         <ContactList

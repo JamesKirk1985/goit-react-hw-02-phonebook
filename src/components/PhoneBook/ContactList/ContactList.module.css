@@ -1,0 +1,19 @@
+.list {
+  margin: 40px;
+}
+.contactItem {
+  width: 300px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+.button {
+  border: 2px solid rgb(13, 13, 179);
+  background-color: rgb(124, 201, 201);
+}
+.button:focus,
+.button:hover {
+  background-color: rgb(134, 124, 201);
+}

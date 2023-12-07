@@ -1,4 +1,5 @@
 import { Component } from "react"
+import css from './ContactList.module.css'
 
 export class ContactList extends Component {
 
@@ -15,13 +16,13 @@ export class ContactList extends Component {
 
     render() {          
         return (       
-            <ul>              
+            <ul className={ css.list}>              
                 {(this.props.filter === '' ?
                     this.props.contactsList :
                     this.filterFunction(this.props.filter))
-                    .map((item) => (<li  key={item.id} id={item.id}>
+                    .map((item) => (<li className={css.contactItem} key={item.id} id={item.id}>
                 <div>{item.name}: {item.number}</div>
-                <button type="button" key={item.id} onClick={this.deleteFunc}>Delete</button>
+                        <button className={css.button } type="button" key={item.id} onClick={this.deleteFunc}>Delete</button>
             </li>))}          
             </ul>)
     }
