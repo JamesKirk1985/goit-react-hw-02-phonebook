@@ -16,8 +16,7 @@ class PhoneBook extends Component {
     filter: ''
   }
 
-  addContact = (contactObj) => {
-    console.log("add")
+  addContact = (contactObj) => {    
     const newContacts = this.state.contacts;
     const newName = contactObj.name.trim()
     if (newContacts.some(({ name }) => (newName === name.trim()))) {
@@ -29,8 +28,7 @@ class PhoneBook extends Component {
   }
 
   filterAdd = (contactName) => {
-    this.setState(contactName)
-    console.log(this.state.filter)
+    this.setState(contactName)    
 }  
 
   deleteContact = (contactId) => {
