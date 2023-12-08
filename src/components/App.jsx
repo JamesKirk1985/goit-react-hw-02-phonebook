@@ -4,7 +4,7 @@ import { Filter } from "./PhoneBook/Filter/Filter";
 import { ContactList } from "./PhoneBook/ContactList/ContactList";
 import css from './App.module.css'
 
-class PhoneBook extends Component {
+export class App extends Component {
 
   state = {
     contacts: [
@@ -29,7 +29,13 @@ class PhoneBook extends Component {
 
   filterAdd = (contactName) => {
     this.setState(contactName)    
-}  
+  }  
+  filterFunction = (filterKey) => {
+        let filterContact = this.state.contacts.filter((item) => (
+            item.name.toLowerCase().includes(filterKey.toLowerCase())
+        ))
+        return filterContact
+    }
 
   deleteContact = (contactId) => {
     const prevContacts = this.state.contacts   
@@ -46,19 +52,14 @@ class PhoneBook extends Component {
         <h2 className={css.title}>Contacts</h2>  
         <Filter filterAdd={this.filterAdd} />
         
-        <ContactList
-          filterKey={this.state.filter}
+        <ContactList          
           contactsList={this.state.contacts}
-          filter={this.state.filter}
-          deleteContact={this.deleteContact}        
+          filterContact={this.filterFunction(this.state.filter)}
+          deleteContact={this.deleteContact}    
+          
         />                  
       </div>
     )
   }  
 }
   
-export const App = () => {
-  return (
-    <PhoneBook></PhoneBook>     
-  );
-};
