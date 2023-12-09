@@ -55,8 +55,7 @@ export class App extends Component {
         <ContactList          
           contactsList={this.state.contacts}
           filterContact={this.filterFunction(this.state.filter)}
-          deleteContact={this.deleteContact}    
-          
+          deleteContact={this.deleteContact}           
         />                  
       </div>
     )

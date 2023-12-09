@@ -1,13 +1,10 @@
-import { Component } from "react"
 import css from './Filter.module.css'
 
-export class Filter extends Component {
+export const Filter = ({filterAdd}) => {
     
-    inputChange = ({ target: { value, name } }) => {    
-    this.props.filterAdd({[name]: value})            
-    }
-  
-    render() {
+    function inputChange ({ target: { value, name } })  {    
+    filterAdd({[name]: value})            
+    }    
         return (
             <label className={ css.label}>
                 Find contacts by name<br/>
@@ -15,9 +12,9 @@ export class Filter extends Component {
                     className={css.input}
                     type="text"
                     name="filter"
-                    onChange={this.inputChange}
+                    onChange={inputChange}
                     required />
             </label>
         )
-    }
+    
 }
