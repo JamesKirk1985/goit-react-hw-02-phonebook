@@ -17,29 +17,17 @@ export class App extends Component {
     counter: 0
   }
 
-  addContact = (contactObj) => {    
-    // const prevContacts = this.state.contacts;
-    // const newName = contactObj.name.trim()
+  addContact = (contactObj) => {       
 
-    // if (prevContacts.some(({ name }) => (newName === name.trim()))) {
-    //   alert(`${newName} is already in contacts`)
-    //   return
-    // }  
-
-    // this.setState((prevState) => {    
-    //      prevState.contacts.push(contactObj)  
-    //   return { contacts: prevState.contacts}
-    // })  
-
-    const newContacts = this.state.contacts;    
-    const newName = contactObj.name.trim()      
-
-    if (newContacts.some(({ name }) => (newName === name.trim()))) {
-      alert(`${newName} is already in contacts`)
+    this.setState((prevState) => {    
+          if (prevState.contacts.some(({ name }) => (contactObj.name.trim() === name.trim()))) {
+      alert(`${contactObj.name.trim()} is already in contacts`)
       return
-    }
-    newContacts.push(contactObj)
-    this.setState({ contacts: newContacts })
+    }  
+      return { contacts: [...prevState.contacts, contactObj]}
+    })  
+
+   
   }
 
   filterAdd = (contactName) => {
