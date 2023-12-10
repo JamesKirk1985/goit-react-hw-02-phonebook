@@ -13,12 +13,27 @@ export class App extends Component {
       { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
       { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
     ],
-    filter: ''
+    filter: '',
+    counter: 0
   }
 
   addContact = (contactObj) => {    
-    const newContacts = this.state.contacts;
-    const newName = contactObj.name.trim()
+    // const prevContacts = this.state.contacts;
+    // const newName = contactObj.name.trim()
+
+    // if (prevContacts.some(({ name }) => (newName === name.trim()))) {
+    //   alert(`${newName} is already in contacts`)
+    //   return
+    // }  
+
+    // this.setState((prevState) => {    
+    //      prevState.contacts.push(contactObj)  
+    //   return { contacts: prevState.contacts}
+    // })  
+
+    const newContacts = this.state.contacts;    
+    const newName = contactObj.name.trim()      
+
     if (newContacts.some(({ name }) => (newName === name.trim()))) {
       alert(`${newName} is already in contacts`)
       return
@@ -38,16 +53,16 @@ export class App extends Component {
     }
 
   deleteContact = (contactId) => {
-    const prevContacts = this.state.contacts   
-    const newContacts = prevContacts.filter((item) => (item.id !== contactId))
-    this.setState({contacts: newContacts})    
+    this.setState((prev) => {
+      return {contacts: prev.contacts.filter((item) => (item.id !== contactId))}
+      }) 
   }
 
 
   render() {
     return (    
       <div>
-        <ContactForm addContact={this.addContact} inputChange={this.inputChange} />
+        <ContactForm addContact={this.addContact} />
         
         <h2 className={css.title}>Contacts</h2>  
         <Filter filterAdd={this.filterAdd} />
